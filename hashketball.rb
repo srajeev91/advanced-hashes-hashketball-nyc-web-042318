@@ -1,3 +1,5 @@
+require "pry"
+
 # Write your code here!
 
 def game_hash
@@ -243,5 +245,20 @@ def big_shoe_rebounds
   num_rebounds
 end
 
+def player_by_number(number)
+  game_hash.each do |team, details|
+    details.each do |attributes, info|
+      if attributes == :players
+        info.each do |name, stats|
+          if stats[:number] == number
+            return name
+          end
+        end
+      end
+    end
+  end
+  return "Not found."
+end
 
+Pry.start
 
